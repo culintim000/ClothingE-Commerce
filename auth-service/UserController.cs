@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 namespace Controllers
 {
     [ApiController]
-    [Route("catalog")]
-    public class CatalogController : ControllerBase
+    [Route("auth")]
+    public class UserController : ControllerBase
     {
         private readonly User _db;
 
-        public CatalogController(ILogger<CatalogController> logger, User db)
+        public UserController(ILogger<UserController> logger, User db)
         {            
             _db = db;
         }
