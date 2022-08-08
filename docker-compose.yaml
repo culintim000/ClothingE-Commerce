@@ -1,0 +1,29 @@
+version: '3.8'
+
+networks:
+  clothesecommerce.1:
+    external: false
+
+services:
+  sqlserver:
+    container_name: sqlserver
+    build:
+      context: ./sql/
+      dockerfile: sqlsetup.dockerfile
+    image: sqlserver:1
+    ports:
+      - "1431:1433"
+    networks:
+      - clothesecommerce.1
+    environment:
+      SA_PASSWORD: "abc123!!@"
+      ACCEPT_EULA: "Y"
+
+  message-queue:
+    container_name: message-queue
+    image: rabbitmq:3.10-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - clothesecommerce.1
