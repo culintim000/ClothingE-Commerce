@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj": {}
+    "d:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj": {}
   },
   "projects": {
-    "D:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj": {
+    "d:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj",
+        "projectUniqueName": "d:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj",
         "projectName": "auth-service",
-        "projectPath": "D:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj",
+        "projectPath": "d:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj",
         "packagesPath": "C:\\Users\\tkahrs\\.nuget\\packages\\",
-        "outputPath": "D:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\obj\\",
+        "outputPath": "d:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

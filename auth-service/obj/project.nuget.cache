@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SmEpD8YUW/hYufA/1/7lOEf7DrrwkUDeerpE5863p4B3sZ9H9D5cV5+7kpWBognC32h6wqkxUbmh8QN1KY4BwQ==",
+  "dgSpecHash": "oyTPOqL64kvIIY+40WO8r99uC6V6yXn9/WPhQBqv+1VIKB3xKA7LfUF5oNMUQtGXClXVkv44UsoUluH4lofBeg==",
   "success": true,
-  "projectFilePath": "D:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj",
+  "projectFilePath": "d:\\MyDocs\\School\\Y2\\Q4\\Service-Project\\ClothingE-Commerce\\auth-service\\auth-service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tkahrs\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\tkahrs\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
