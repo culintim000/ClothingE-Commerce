@@ -38,7 +38,7 @@ services:
 
   gateway:
     container_name: gateway
-    build: 
+    build:
       context: ./GatewayDemo
       dockerfile: 2.dockerfile
     image: gateway:1
@@ -49,6 +49,27 @@ services:
     depends_on:
       - eureka
     deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+  auth-service:
+    container_name: auth-service #remove this
+    build:
+      context: ./auth-service
+      dockerfile: auth.dockerfile
+    image: auth-service:1
+    ports:
+      -  "7244:80" #remove this
+      # - "80"
+    networks:
+      - netecommerce.1
+    depends_on:
+      - eureka
+    deploy:
+      # replicas: 3
       restart_policy:
         condition: on-failure
         delay: 5s
