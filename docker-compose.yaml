@@ -68,6 +68,7 @@ services:
       - netecommerce.1
     depends_on:
       - eureka
+      - sqlserver
     deploy:
       # replicas: 3
       restart_policy:
