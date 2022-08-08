@@ -47,7 +47,7 @@ services:
     networks:
       - clothesecommerce.1
     depends_on:
-      - eureka.c
+      - eureka
     deploy:
       restart_policy:
         condition: on-failure
