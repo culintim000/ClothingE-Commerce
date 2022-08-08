@@ -27,3 +27,30 @@ services:
       - "15672:15672"
     networks:
       - clothesecommerce.1
+
+  eureka:
+    container_name: eureka
+    image: steeltoeoss/eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - clothesecommerce.1
+
+  gateway:
+    container_name: gateway
+    build: 
+      context: ./GatewayDemo
+      dockerfile: 2.dockerfile
+    image: gateway:1
+    ports:
+      - "8888:8888"
+    networks:
+      - clothesecommerce.1
+    depends_on:
+      - eureka.c
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
