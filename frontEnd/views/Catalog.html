@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <hmtl lang="en">
-<head>
-    <title>E-Commerce Catalog</title>
-    <link rel="stylesheet" href="../css/CatalogStyle.css">
-</head>
-<body>
-    <h1>E-Commerce Catalog</h1>
-    <p>Welcome to our site!</p>
-    <p>Here you can find all the products we have in stock.</p>
-    <section id="cart">
-        <h2>Cart</h2>
-        <p>You have <span id="cart-count">0</span> items in your cart.</p>
-        <div id="cartItems">
-            <!--Item array will go here-->
+
+    <head>
+        <title>E-Commerce Catalog</title>
+        <link rel="stylesheet" href="../css/CatalogStyle.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    </head>
+    <nav>
+        <div class="conatainer">
+            <ul class="navbar-left">
+                <li id="mainHeader">E-Commerce Catalog</h2></li>
+            </ul>
+            <ul class="navbar-right">
+                <li><a href="#" id="cart"><i class="shoppingcart"><img id="icon" src="../images/cartIcon.png"></i>Cart<span class="badge">0</span></a></li>
+                <!-- <span class="badge">3</span> this will be number of items -->
+            </ul>
         </div>
-        <p>Total: <span id="cart-total">$0.00</span></p> <!--not sure if im receving price data-->
-        <button id="checkout">Checkout</button>
-    </section>
-    <section id="catalog">
-        <div id="catalogItems">
-            <!--Item array will go here-->
+
+    </nav>
+    <div class="container">
+        <div id="shopping-cart" class="hidden">
+            <img id="menuTri" src="../images/menuTriangle.png">
+            <div class="shopping-cart-header">
+                <i class="cart-icon"><img id="icon" src="../images/cartIcon.png"></i><span class="badge">0</span>
+                <!--VAriable name change here  and up there ^^ fa fa whatever -->
+                <div class="shopping-cart-total">
+                    <span class="lighter-text">Total:</span>
+                    <span class="main-color-text">$0.00</span>
+                </div>
+            </div>
+            <!--end shopping-cart-header -->
+
+            <ul class="shopping-cart-items">
+                <!--item array here-->
+            </ul>
+
+            <a href="#" class="button" id="checkoutButton">Checkout</a>
         </div>
-    </section>
-</body>
-</html>
+        <!--end shopping-cart -->
+    </div>
+    <!--end container -->
+    <body>
+        <section id="catalog">
+            <div id="catalogItems">
+                <!--Item array will go here-->
+            </div>
+        </section>
+    </body>
+    <script src="../javascript/design.js"></script>
+    <script src="../javascript/Catalog.js"></script>
+    </html>
