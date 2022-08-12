@@ -26,7 +26,10 @@ namespace Controllers
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserDto request)
         {
-            
+            // make sure user doesn't already exist
+            // make new user based off request dto
+            // save user to db
+            // return JWT based on user
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             user.Username = request.Username;
@@ -39,6 +42,9 @@ namespace Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)
         {
+            // find user exists on username OR email
+            // validate password
+            // return JWT token based on user
             if (user.Username != request.Username)
             {
                 return BadRequest("User not found.");
@@ -56,6 +62,8 @@ namespace Controllers
 
             return Ok(token);
         }
+
+        // TODO update user
 
         private string CreateToken(User user)
         {
