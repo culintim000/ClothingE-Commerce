@@ -1,5 +1,9 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Controllers
 {
@@ -57,8 +61,8 @@ namespace Controllers
 
             string token = CreateToken(user);
 
-            var refreshToken = GenerateRefreshToken();
-            SetRefreshToken(refreshToken);
+            // var refreshToken = GenerateRefreshToken();
+            // SetRefreshToken(refreshToken);
 
             return Ok(token);
         }
