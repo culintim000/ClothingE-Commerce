@@ -1,5 +1,7 @@
 console.log('catalog.js');
 var catalogItems = document.getElementById('catalogItems');
+var addToCartBtn = document.getElementsByClassName('add-to-cart');;
+var shoppingCartItems = document.getElementById('shopping-cart-items');
 window.onload = appendCatalog;
 
 /*var catalog = document.getElementById("catalog-items");
@@ -49,6 +51,8 @@ let items = [{
   "sizes": ["S", "M", "L", "XL"],
   "imgurl": "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw98251653/7_additional_750/00463347-01.jpg?sw=1000&sh=1500"
 }]
+
+let cartItems = [];
 function appendCatalog (){
   console.log('HELLO I AM TRYING TO DISPLAY THE CATALOG');
     items.forEach(items => {
@@ -68,5 +72,29 @@ function appendCatalog (){
         catalog.appendChild(catalogItem);
     }
     );
+
+    function addToCart(e){
+        console.log('HELLO I AM TRYING TO ADD TO CART');
+        cartItems.push(e.target.dataset.id);
+        let id = e.target.getAttribute('data-id');
+        let item = items.find(item => item.id == id);
+        let cartItem = document.createElement('li');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+        <div class="cart-item-info">
+            <h3>${item.name}</h3>
+            <p>${item.type}</p>
+            <p>${item.color}</p>
+            <p>${item.price}</p>
+            <button class="remove-from-cart" data-id="${item.id}">Remove from Cart</button>
+        </div>
+        `;
+        cart.appendChild(shoppingCartItems);
+        console.log(cartItems);
+    }
+
+    addToCartBtn.addEventListener('click', addToCart);
+
+
 
 }
