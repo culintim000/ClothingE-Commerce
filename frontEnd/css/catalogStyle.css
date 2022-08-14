@@ -217,7 +217,31 @@ a:hover {
     border-width: 8px;
     margin-left: -8px;
 }
-
+.cart-item-info{
+    padding: 5px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    height: 115px;
+    background-color: #c7ddfa;
+}
+.remove-from-cart{
+    position: relative;
+    display: flex;
+    background-color: #6394f8;
+    color: #ffffff;
+    border: #6394f8;
+    padding: 5px;
+    margin: 1px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+.remove-from-cart:hover{
+    background-color: #ffffff;
+    color: #6394f8;
+    border: #6394f8;
+}
 .cart-icon {
     color: #515783;
     font-size: 24px;

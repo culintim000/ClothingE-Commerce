@@ -1,7 +1,10 @@
 console.log('catalog.js');
 var catalogItems = document.getElementById('catalogItems');
-var addToCartBtn = document.getElementsByClassName('add-to-cart');;
-var shoppingCartItems = document.getElementById('shopping-cart-items');
+var addToCartBtn = document.getElementsByClassName('add-to-cart');
+var removeFromCartBtn = document.getElementsByClassName('remove-from-cart');
+var shoppingCartItems = document.getElementById('shoppping-cart-items');
+var cartTotal = document.getElementById('total-cart');
+console.log(shoppingCartItems)
 window.onload = appendCatalog;
 
 /*var catalog = document.getElementById("catalog-items");
@@ -52,6 +55,7 @@ let items = [{
   "imgurl": "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw98251653/7_additional_750/00463347-01.jpg?sw=1000&sh=1500"
 }]
 
+
 let cartItems = [];
 function appendCatalog (){
   console.log('HELLO I AM TRYING TO DISPLAY THE CATALOG');
@@ -69,32 +73,71 @@ function appendCatalog (){
             <button class="add-to-cart" data-id="${items.id}">Add to Cart</button>
         </div>
         `;
+        
         catalog.appendChild(catalogItem);
+        for (var i = 0 ; i < addToCartBtn.length; i++) {
+            addToCartBtn[i].addEventListener('click' , addToCart ); 
+         }
     }
     );
-
-    function addToCart(e){
-        console.log('HELLO I AM TRYING TO ADD TO CART');
-        cartItems.push(e.target.dataset.id);
-        let id = e.target.getAttribute('data-id');
-        let item = items.find(item => item.id == id);
-        let cartItem = document.createElement('li');
-        cartItem.classList.add('cart-item');
-        cartItem.innerHTML = `
-        <div class="cart-item-info">
-            <h3>${item.name}</h3>
-            <p>${item.type}</p>
-            <p>${item.color}</p>
-            <p>${item.price}</p>
-            <button class="remove-from-cart" data-id="${item.id}">Remove from Cart</button>
-        </div>
-        `;
-        cart.appendChild(shoppingCartItems);
-        console.log(cartItems);
-    }
-
-    addToCartBtn.addEventListener('click', addToCart);
-
-
-
 }
+
+function addToCart(e){
+    console.log('HELLO I AM TRYING TO ADD TO CART');
+    cartItems.push(e.target.dataset.id);
+    console.log("push");
+    let id = e.target.getAttribute('data-id');
+    let item = items.find(item => item.id == id);
+    let cartItem = document.createElement('li');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+    <div class="cart-item-info">
+        <h3>${item.name}</h3>
+        <p>${item.price}</p>
+        <button class="remove-from-cart" data-id="${item.id}">Remove from Cart</button>
+    </div>
+    `;
+    shoppingCartItems.appendChild(cartItem);
+    findTotal();
+    for (var i = 0 ; i < removeFromCartBtn.length; i++) {
+        removeFromCartBtn[i].addEventListener('click' , removeFromCart); 
+     }
+    updateBadge();
+    console.log(cartItems);
+}
+
+function removeFromCart(e){
+    console.log('HELLO I AM TRYING TO REMOVE FROM CART');
+    let id = e.target.getAttribute('data-id');
+    let item = cartItems.find(item => item.id == id);
+    cartItems.splice(cartItems.indexOf(item), 1);
+    e.target.parentElement.parentElement.remove();
+    findTotal();
+    updateBadge();
+}
+
+function findTotal(){
+    console.log('HELLO I AM TRYING TO FIND TOTAL');
+    let total = 0;
+    for (var i = 0 ; i < cartItems.length; i++) {
+        let item = items.find(item => item.id == cartItems[i]);
+        console.log(item.price);
+        total += parseFloat(item.price.replace('$', ''));
+    }
+    console.log(total);
+    cartTotal.innerHTML = total.toFixed(2);
+}
+
+function updateBadge(){
+    console.log('HELLO I AM TRYING TO UPDATE BADGE');
+    let badge = document.getElementById('number-of-items-in-cart');
+    let badge2 = document.getElementById('number-of-items-in-cart2');
+    badge.innerHTML = cartItems.length;
+    badge2.innerHTML = cartItems.length;
+}
+
+
+
+
+
+

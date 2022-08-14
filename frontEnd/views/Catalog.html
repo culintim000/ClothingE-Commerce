@@ -12,7 +12,7 @@
                 <li id="mainHeader">E-Commerce Catalog</h2></li>
             </ul>
             <ul class="navbar-right">
-                <li><a href="#" id="cart"><i class="shoppingcart"><img id="icon" src="../images/cartIcon.png"></i>Cart<span class="badge">0</span></a></li>
+                <li><a href="#" id="cart"><i class="shoppingcart"><img id="icon" src="../images/cartIcon.png"></i>Cart<span class="badge" id="number-of-items-in-cart">0</span></a></li>
                 <!-- <span class="badge">3</span> this will be number of items -->
             </ul>
         </div>
@@ -22,16 +22,16 @@
         <div id="shopping-cart" class="hidden">
             <img id="menuTri" src="../images/menuTriangle.png">
             <div class="shopping-cart-header">
-                <i class="cart-icon"><img id="icon" src="../images/cartIcon.png"></i><span class="badge">0</span>
+                <i class="cart-icon"><img id="icon" src="../images/cartIcon.png"></i><span class="badge" id="number-of-items-in-cart2">0</span>
                 <!--VAriable name change here  and up there ^^ fa fa whatever -->
                 <div class="shopping-cart-total">
                     <span class="lighter-text">Total:</span>
-                    <span class="main-color-text">$0.00</span>
+                    <span class="main-color-text" id="total-cart">$0.00</span>
                 </div>
             </div>
             <!--end shopping-cart-header -->
 
-            <ul class="shopping-cart-items">
+            <ul class="shopping-cart-items" id="shoppping-cart-items">
                 <!--item array here-->
             </ul>
 
