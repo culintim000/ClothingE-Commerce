@@ -6,12 +6,13 @@ import re
 
 class Item:
     def __init__(self) -> None:
-        self.img = None
+        self.img: str = None
+        self.name: str = None
+        self.href: str = None
+        self.price: float = None
+        size_list: list = []
     def to_dict(self) -> dict:
         return (self.__dict__)
-
-class Shirt(Item):
-    pass
 
 def render_page(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -21,7 +22,9 @@ def render_page(url):
     #driver.quit()
     return r
 
-
+def write_temp(txt):
+    with open('temp.txt', 'w') as f:
+        f.write(txt)
 
 
 def forever21():
@@ -30,14 +33,37 @@ def forever21():
     soup = BeautifulSoup(html, 'html.parser')
     products: list = soup.find_all("div", {"class":'product-grid__item'})
     #for local items it is forever21.com + path
+    local_path: str = 'forever21.com'
     print(len(products))
-    # print(products[0])
+    # write_temp(str(products[0]))
+    # return
     product_objects: list = []
     for product in products:
-        img = re.search(r'<source[^>]+srcset="([^">]+)"', str(product)).group(1)
-        print(img)
-        test = Item()
-        test.img = img
+    # try:
+        product = str(product)
+        one_line_prod: str = product.replace('\n', '')
+
+        item = Item()
+        img: str = re.search(r'<source[^>]+srcset="([^">]+)"', product).group(1)
+        item.img = img
+
+        
+        name: str = re.search(r'<p class=\"product-tile__body-section product-tile__name text-line--small letter-spacing--small body-type--centi\" itemprop=\"name\">(.*?)<\/p>', one_line_prod).group(1)
+        item.name = name
+
+        #attach the home link to the child link
+        href = local_path + str(re.search(r'<a class=\"product-tile__anchor product-tile__anchor--product-info\" data-product-url=\"productShow\" href=\"(.*?)\"', product).group(1))
+        item.href = href
+        
+        price: float = float(re.search(r'itemprop="price">(.*?)<\/span>', one_line_prod).group(1).replace('$',''))
+        item.price = price
+
+
+
+        print(item.to_dict())
+        product_objects.append(item)
+    # except:
+        # pass
         break
 
 def main():
