@@ -44,7 +44,6 @@ def write_temp(txt):
 def forever21_single_item(obj: Item):
     html = render_page(obj.href)
     soup = BeautifulSoup(html, 'html.parser')
-    content: str = str(soup.find("div", {"class":"pdp-main__details-container"}))
 
     color_tag_list: list = soup.find_all("button", {"swatch--color-large"})
     dirty_colors: list = [str(x.get('aria-label')) for x in color_tag_list]
@@ -57,7 +56,6 @@ def forever21_single_item(obj: Item):
     obj.size_list = clean_sizes
 
 def forever21(url: str, type: str):
-    # url: str = r'https://www.forever21.com/us/shop/catalog/category/plus/plus-size-new-arrivals?cgid=plus_size_new_arrivals&sz=64'
     html = render_page(url)
     soup = BeautifulSoup(html, 'html.parser')
     products: list = soup.find_all("div", {"class":'product-grid__item'})
