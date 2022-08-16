@@ -32,7 +32,7 @@ mydb = myclient['ClothingE-Commerce']
 
 def render_page(url):
     driver.get(url)
-    time.sleep(1)
+    time.sleep(.25)
     r = driver.page_source
     return r
 
@@ -97,7 +97,6 @@ def forever21(url: str, type: str):
     print(len(product_objects))
     mycol.insert_many(product_objects)
 
-
 def main():
     mydb['clothes'].delete_many({})
     forever21(r'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_sweaters%7Cshop_by_category_new_tees%7Cshop_by_category_new_tops%7Cshop_by_category_new_shirts_and_blouses&sz=64', 'top')
@@ -107,9 +106,8 @@ def main():
 
 if __name__ == "__main__":
     driver = webdriver.Chrome(ChromeDriverManager().install())
-    # try:
-    #     main()
-    # except:
-    #     pass
-    main()
+    try:
+        main()
+    except:
+        pass
     driver.quit()
