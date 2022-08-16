@@ -16,7 +16,7 @@ namespace Controllers
         public static User user = new User();
 
         public UserController(ILogger<UserController> logger, User db, IConfiguration configuration)
-        {            
+        {
             _db = db;
             _configuration = configuration;
         }
@@ -31,16 +31,28 @@ namespace Controllers
         public async Task<ActionResult<User>> Register(UserDto request)
         {
             // make sure user doesn't already exist
+            var checkUser = await _db.Users.FindAsync(request.Username);
+            if (checkUser != null)
+            {
+                return BadRequest("User already exists");
+            }
+
             // make new user based off request dto
-            // save user to db
-            // return JWT based on user
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            var newuser = new User
+            {
+                Username = request.Username,
+                Email = request.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt
+            };
 
-            user.Username = request.Username;
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            // save user to db
+            _db.Users.Add(user);
+            await _db.SaveChangesAsync();
 
-            return Ok(user);
+            // return JWT based on user
+            return Ok(CreateToken(newuser));
         }
 
         [HttpPost("login")]
