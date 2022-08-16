@@ -5,6 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import re
 from pymongo import MongoClient
 import os
+import time
 
 class Item:
     def __init__(self) -> None:
@@ -28,7 +29,7 @@ DB_PASS = DB_PASS if DB_PASS is not None else 'P6gbkQPwUZGbGazB'
 myclient = MongoClient(f'mongodb+srv://{DB_USER}:{DB_PASS}@cluster0.wexky.mongodb.net/?retryWrites=true&w=majority')
 mydb = myclient['ClothingE-Commerce']
 
-
+collections: list = []
 
 def render_page(url):
     driver.get(url)
@@ -56,7 +57,6 @@ def forever21_single_item(obj: Item):
     obj.size_list = clean_sizes
 
 def forever21(url: str, type: str):
-    mycol = mydb['clothes']
     # url: str = r'https://www.forever21.com/us/shop/catalog/category/plus/plus-size-new-arrivals?cgid=plus_size_new_arrivals&sz=64'
     html = render_page(url)
     soup = BeautifulSoup(html, 'html.parser')
@@ -89,25 +89,34 @@ def forever21(url: str, type: str):
             forever21_single_item(item)
 
             item.type = type
-            print(item.to_dict())
+            # print(item.to_dict())
         except:
             pass
+            print('here')
         product_objects.append(item.to_dict())
         # break
-    print(len(product_objects))
-    mycol.insert_many(product_objects)
+    # print(len(product_objects))
+    collections.append(product_objects)
 
 def main():
+    amt_per_page: int = 64
+    forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_sweaters%7Cshop_by_category_new_tees%7Cshop_by_category_new_tops%7Cshop_by_category_new_shirts_and_blouses&sz={amt_per_page}', 'top')
+    forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_bottoms%7Cshop_by_category_new_pants%7Cshop_by_category_new_shorts%7Cshop_by_category_new_skirts%7Cshop_by_category_new_jeans%7Cshop_by_category_new_leggings&sz={amt_per_page}', 'bottom')
+    forever21(f'https://www.forever21.com/us/shop/catalog/category/21men/mens-new-arrivals-clothing?cgid=mens_new_arrivals_clothing&prefn1=akeneo_shopByCategoryNew&prefv1=shop_by_category_new_jackets_and_outerwear%7Cshop_by_category_new_shirts_and_blouses%7Cshop_by_category_new_tees%7Cshop_by_category_new_sweaters%7Cshop_by_category_new_tops&prefn2=akeneo_sizeName&prefv2=XXL%7CXL&sz={amt_per_page}', 'top')
+    forever21(f'https://www.forever21.com/us/shop/catalog/category/21men/mens-new-arrivals-clothing?cgid=mens_new_arrivals_clothing&prefn1=akeneo_shopByCategoryNew&prefv1=shop_by_category_new_bottoms%7Cshop_by_category_new_jeans%7Cshop_by_category_new_shorts%7Cshop_by_category_new_pants&prefn2=akeneo_sizeName&prefv2=XXL%7CXL%7C2XL%7CL%2FXL&sz={amt_per_page}', 'bottom')
     mydb['clothes'].delete_many({})
-    forever21(r'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_sweaters%7Cshop_by_category_new_tees%7Cshop_by_category_new_tops%7Cshop_by_category_new_shirts_and_blouses&sz=64', 'top')
-    forever21(r'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_bottoms%7Cshop_by_category_new_pants%7Cshop_by_category_new_shorts%7Cshop_by_category_new_skirts%7Cshop_by_category_new_jeans%7Cshop_by_category_new_leggings&sz=64', 'bottom')
+    for collection in collections:
+        mydb['clothes'].insert_many(list(collection))
+    print('done')
 
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     driver = webdriver.Chrome(ChromeDriverManager().install())
     try:
         main()
     except:
         pass
     driver.quit()
+    print(f'total time: {round(((time.time() - start_time)/60), 2)} minutes')
