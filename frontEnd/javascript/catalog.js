@@ -55,6 +55,16 @@ let items = [{
   "imgurl": "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw98251653/7_additional_750/00463347-01.jpg?sw=1000&sh=1500"
 }]
 
+/** 
+{  "_id": {    "$oid": "62fae71f57dad9cd45e47f89"  },
+   "img": "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw65d3bffd/1_front_750/00463225-01.jpg?sw=276&amp;sh=414",
+   "name": "Plus Size Airwalk 1986 Graphic Tee",
+   "href": "https://www.forever21.com/us/2000463225.html?dwvar_2000463225_color=01",
+   "price": 24.99,  "type": "top",
+   "size_list": [    "0X",    "1X",    "2X",    "3X"  ],
+    "color_list": [    "GREY/MULTI"  ]}
+**/
+
 
 let cartItems = [];
 function appendCatalog (){
