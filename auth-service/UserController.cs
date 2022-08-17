@@ -13,7 +13,6 @@ namespace Controllers
     {
         private readonly User _db;
         private readonly IConfiguration _configuration;
-        public static User user = new User();
 
         public UserController(ILogger<UserController> logger, User db, IConfiguration configuration)
         {
@@ -59,9 +58,10 @@ namespace Controllers
         public async Task<ActionResult<string>> Login(UserDto request)
         {
             // find user exists on username OR email
-            if (user.Username != request.Username)
+            var user = await _db.Users.FindAsync(request.Username);
+            if (user == null)
             {
-                return BadRequest("User not found.");
+                return BadRequest("User doesn't exist");
             }
 
             // validate password
