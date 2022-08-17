@@ -59,24 +59,18 @@ namespace Controllers
         public async Task<ActionResult<string>> Login(UserDto request)
         {
             // find user exists on username OR email
-            // validate password
-            // return JWT token based on user
             if (user.Username != request.Username)
             {
                 return BadRequest("User not found.");
             }
 
+            // validate password
             if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
             {
                 return BadRequest("Wrong password.");
             }
-
-            string token = CreateToken(user);
-
-            // var refreshToken = GenerateRefreshToken();
-            // SetRefreshToken(refreshToken);
-
-            return Ok(token);
+            // return JWT token based on user
+            return Ok(CreateToken(user));
         }
 
         // TODO update user
