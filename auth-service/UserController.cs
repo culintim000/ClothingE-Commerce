@@ -11,10 +11,10 @@ namespace Controllers
     [Route("auth")]
     public class UserController : ControllerBase
     {
-        private readonly User _db;
+        private readonly UserDb _db;
         private readonly IConfiguration _configuration;
 
-        public UserController(ILogger<UserController> logger, User db, IConfiguration configuration)
+        public UserController(ILogger<UserController> logger, UserDb db, IConfiguration configuration)
         {
             _db = db;
             _configuration = configuration;
@@ -27,10 +27,10 @@ namespace Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDto request)
+        public async Task<ActionResult<User>> Register(UserRegisterDto request)
         {
             // make sure user doesn't already exist
-            var checkUser = await _db.Users.FindAsync(request.Username);
+            var checkUser = await _db.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
             if (checkUser != null)
             {
                 return BadRequest("User already exists");
@@ -38,8 +38,9 @@ namespace Controllers
 
             // make new user based off request dto
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
-            var newuser = new User
+            var user = new User
             {
+                // Id = request.Username,
                 Username = request.Username,
                 Email = request.Email,
                 PasswordHash = passwordHash,
@@ -51,14 +52,14 @@ namespace Controllers
             await _db.SaveChangesAsync();
 
             // return JWT based on user
-            return Ok(CreateToken(newuser));
+            return Ok(CreateToken(user));
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserDto request)
+        public async Task<ActionResult<string>> Login(UserLoginDto request)
         {
             // find user exists on username OR email
-            var user = await _db.Users.FindAsync(request.Username);
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == request.Username || u.Email == request.Username);
             if (user == null)
             {
                 return BadRequest("User doesn't exist");
