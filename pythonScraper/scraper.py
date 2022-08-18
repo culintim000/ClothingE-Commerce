@@ -47,12 +47,12 @@ def forever21_single_item(obj: Item):
 
     color_tag_list: list = soup.find_all("button", {"swatch--color-large"})
     dirty_colors: list = [str(x.get('aria-label')) for x in color_tag_list]
-    clean_colors: list = [color.removeprefix('Color: ') for color in dirty_colors]
+    clean_colors: list = [str(color.removeprefix('Color: ')).split('/')[0] for color in dirty_colors]
     obj.color_list = clean_colors
 
     size_tag_list: list = soup.find_all("button", {"class":"swatch--size-large"})
     dirty_sizes: list = [str(x.get('aria-label')) for x in size_tag_list]
-    clean_sizes: list = [size.removeprefix('Size: ') for size in dirty_sizes]
+    clean_sizes: list = [str(size.removeprefix('Size: ')).split('/')[0] for size in dirty_sizes]
     obj.size_list = clean_sizes
 
 def forever21(url: str, type: str):
@@ -97,7 +97,7 @@ def forever21(url: str, type: str):
     collections.append(product_objects)
 
 def main():
-    amt_per_page: int = 64
+    amt_per_page: int = 9
     forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_sweaters%7Cshop_by_category_new_tees%7Cshop_by_category_new_tops%7Cshop_by_category_new_shirts_and_blouses&sz={amt_per_page}', 'top')
     forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_bottoms%7Cshop_by_category_new_pants%7Cshop_by_category_new_shorts%7Cshop_by_category_new_skirts%7Cshop_by_category_new_jeans%7Cshop_by_category_new_leggings&sz={amt_per_page}', 'bottom')
     forever21(f'https://www.forever21.com/us/shop/catalog/category/21men/mens-new-arrivals-clothing?cgid=mens_new_arrivals_clothing&prefn1=akeneo_shopByCategoryNew&prefv1=shop_by_category_new_jackets_and_outerwear%7Cshop_by_category_new_shirts_and_blouses%7Cshop_by_category_new_tees%7Cshop_by_category_new_sweaters%7Cshop_by_category_new_tops&prefn2=akeneo_sizeName&prefv2=XXL%7CXL&sz={amt_per_page}', 'top')
