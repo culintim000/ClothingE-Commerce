@@ -65,7 +65,7 @@ services:
       -  "7244:80" #remove this
       # - "80"
     networks:
-      - netecommerce.1
+      - clothesecommerce.1
     depends_on:
       - eureka
       - sqlserver
