@@ -56,21 +56,21 @@ services:
         window: 120s
 
   auth-service:
-    container_name: auth-service #remove this
+    # container_name: auth-service #remove this
     build:
       context: ./auth-service
       dockerfile: auth.dockerfile
     image: auth-service:1
     ports:
-      -  "7244:80" #remove this
-      # - "80"
+      # -  "7244:80" #remove this
+      - "80"
     networks:
       - clothesecommerce.1
     depends_on:
       - eureka
       - sqlserver
     deploy:
-      # replicas: 3
+      replicas: 3
       restart_policy:
         condition: on-failure
         delay: 5s

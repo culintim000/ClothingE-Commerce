@@ -27,7 +27,7 @@ namespace Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserRegisterDto request)
+        public async Task<ActionResult<UserReturnDto>> Register(UserRegisterDto request)
         {
             // make sure user doesn't already exist
             var checkUser = await _db.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
@@ -52,11 +52,12 @@ namespace Controllers
             await _db.SaveChangesAsync();
 
             // return JWT based on user
-            return Ok(CreateToken(user));
+            UserReturnDto outUser = new UserReturnDto(user.Username, user.Email, CreateToken(user));
+            return Ok(outUser);        
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserLoginDto request)
+        public async Task<ActionResult<UserReturnDto>> Login(UserLoginDto request)
         {
             // find user exists on username OR email
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == request.Username || u.Email == request.Username);
@@ -71,7 +72,8 @@ namespace Controllers
                 return BadRequest("Wrong password.");
             }
             // return JWT token based on user
-            return Ok(CreateToken(user));
+            UserReturnDto outUser = new UserReturnDto(user.Username, user.Email, CreateToken(user));
+            return Ok(outUser);
         }
 
         // TODO update user
@@ -116,54 +118,5 @@ namespace Controllers
                 return computedHash.SequenceEqual(passwordHash);
             }
         }
-
-        // [HttpPost("")]
-        // public async Task<IResult> PostItem(User user)
-        // {
-        //     _db.Users.Add(user);
-        //     await _db.SaveChangesAsync();
-        //     return Results.Created($"/{user.Username}", user);
-        // }
-
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<User>> GetItem(long id)
-        // {
-        //     var item = await _db.Users.FindAsync(id);
-
-        //     if(item == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     return Ok(item);
-        // }
-
-        // [HttpGet("allitems")]
-        // public async Task<ActionResult<List<User>>> GetAllItems()
-        // {
-        //     return await _db.Users.ToListAsync<User>();
-        // }
-        
-        // [HttpPut]
-        // public async Task<IResult> PutItem(User user)
-        // {
-        //     _db.Users.Update(user);
-
-        //     await _db.SaveChangesAsync();
-        //     return Results.NoContent();
-        // }
-
-        // [HttpDelete("{id}")]
-        // public async Task<IResult> DeleteItem(long id)
-        // {
-        //     System.Console.WriteLine("Item " + id + " was requested to be deleted");
-        //     var user = await _db.Users.FindAsync(id);
-
-        //     if(user is null)
-        //         return Results.NotFound();
-
-        //     _db.Users.Remove(user);
-        //     await _db.SaveChangesAsync();
-        //     return Results.Ok(user);
-        // }
     }
 }
