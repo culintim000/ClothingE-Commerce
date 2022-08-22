@@ -65,7 +65,7 @@ services:
       -  "7244:80" #remove this
       # - "80"
     networks:
-      - netecommerce.1
+      - clothesecommerce.1
     depends_on:
       - eureka
       - sqlserver
@@ -76,3 +76,31 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
+
+  message-consumer:
+    container_name: message-consumer
+    build: 
+      context: ./spring-rabbitmq-consumer
+      dockerfile: Dockerfile
+    image: message-consumer:1
+    ports: 
+      - "9000:9000"
+    networks: 
+      - clothesecommerce.1
+    depends_on:
+      - eureka
+      - message-queue
+
+  message-producer:
+    container_name: message-producer
+    build: 
+      context: ./spring-rabbitmq-producer
+      dockerfile: Dockerfile
+    image: message-producer:1
+    ports: 
+      - "9001:9001"
+    networks: 
+      - clothesecommerce.1
+    depends_on:
+      - eureka
+      - message-queue
