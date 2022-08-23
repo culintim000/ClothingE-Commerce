@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>E-Commerce Create an Account</title>
+        <title>Create an Account</title>
         <link rel="stylesheet" href="../css/createUserStyle.css">
-        <body>
-            <h1>Create an Account</h1>
-            <p>Fill out this form with valid infomation to create an account.</p>
-            <form id="userCreationForm">
-                <input id= "firstName" name="firstName" type="text" placeholder="First Name", required>
-                <input id= "lastName" name="lastName" type="text" placeholder="Last Name", required>
-                <input id="userName" name="userName" type="text" placeholder="Username", required>
-                <input id="email" name="email" type="text" placeholder="Email", required>
-                <input id="password" name="password" type="password" placeholder="Password", required>
-                <button id="createUserSubmit">Create Account</button>
-            </form>
     </head>
+    <nav>
+        <div class="conatainer">
+            <ul class="navbar-left">
+                <li id="mainHeader">E-Commerce User Creation</h2></li>
+            </ul>
+        </div>
+    </nav>
+    <body>
+        <h3>Fill out this form with valid infomation to create an account.</h3>
+        <form id="userCreationForm">
+            <h2>User Creation</h2>
+            <input id="userName" name="userName" type="text" placeholder="Username", required>
+            <input id="email" name="email" type="text" placeholder="Email", required>
+            <input id="password" name="password" type="password" placeholder="Password", required>
+            <button id="createUserSubmit">Create Account</button>
+        </form>
+    </body>
+    <script src="../javascript/createUser.js"></script>
+    <script src="../javascript/validaiton.js"></script>
 </html>

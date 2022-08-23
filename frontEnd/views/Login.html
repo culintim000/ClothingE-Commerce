@@ -3,13 +3,22 @@
     <head>
         <title>E-Commerce Login</title>
         <link rel="stylesheet" href="../css/LoginStyle.css">
-        <body>
-            <h1>Login</h1>
-            <p>Please enter your username and password.</p>
-            <form id="loginForm">
-                <input id="userName" name="userName" type="text" placeholder="Enter Username or Email", required>
-                <input id="password" name="password" type="password" placeholder="Password", required>
-                <button id="loginSubmit">Sign In</button>
-            </form>
     </head>
+    <nav>
+        <div class="conatainer">
+            <ul class="navbar-left">
+                <li id="mainHeader">E-Commerce Login</h2></li>
+            </ul>
+        </div>
+    </nav>
+    <body>
+        <h4>Please enter your username/email and password.</h4>
+        <form id="loginForm">
+            <h2>Login</h2>
+            <input id="userName" name="userName" type="text" placeholder="Enter Username or Email", required>
+            <input id="password" name="password" type="password" placeholder="Password", required>
+            <button id="loginSubmit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="../views/createUser.html">Create one here.</a></p>
+    </body>
 </html>

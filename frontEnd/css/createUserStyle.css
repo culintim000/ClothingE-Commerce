@@ -1,3 +1,106 @@
-html{
-    background-color: aliceblue;
+html {
+    background-color: #6394f8;
+    color: #abb0be;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px/22px "Lato", Arial, sans-serif;
+    background: #6394f8;
+
+}
+
+nav {
+    padding: 20px 0 40px 0;
+    background: #f8f8f8;
+    font-size: 16px;
+}
+
+ul {
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    text-decoration: none;
+}
+
+.navbar-left {
+    float: left;
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+#mainHeader {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    bottom: 15px;
+    right: 10px;
+}
+
+form {
+    flex-flow: column;
+    justify-content: left;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    transition: 1s;
+    width: 200px;
+    justify-content: space-evenly;
+    height: 230px;
+    padding: 30px;
+    background-color: white;
+    margin-left: 20px;
+    color: #474747;
+    float: left;
+    top: -55px;
+    border: 3px solid #535353;
+
+}
+
+h2 {
+    position: absolute;
+    bottom: 230px;
+}
+
+h3 {
+    color: #474747;
+    justify-content: left;
+    display: flex;
+    width: 100%;
+    float: left;
+    margin-bottom: 50px;
+    margin-right: 20px;
+    top: -30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+#createUserSubmit {
+    background: #6394f8;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+}
+
+#createUserSubmit:hover {
+    background: #b6c8f8;
+    transition: .3s;
+}
+
+input {
+    color: black;
+
+    text-align: center;
 }
