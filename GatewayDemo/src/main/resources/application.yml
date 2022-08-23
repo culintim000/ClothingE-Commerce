@@ -9,7 +9,7 @@ eureka:
 
 spring:
   application:
-    name: gateway-service-sen300
+    name: gateway-service-pro290
   # cloud:
   #   gateway:
   #     routes:
