@@ -14,9 +14,6 @@ body {
     background: #6394f8;
 
 }
-form{
-
-}
 
 nav {
     padding: 20px 0 40px 0;
@@ -35,10 +32,6 @@ ul {
     float: left;
 }
 
-.container {
-    margin: auto;
-    width: 80%;
-}
 
 #mainHeader {
     position: relative;
@@ -48,25 +41,28 @@ ul {
     bottom: 15px;
     right: 10px;
 }
-p{
+
+p {
     padding: 5px;
     width: fit-content;
 }
-a{
+
+a {
     padding: 5px;
     color: white;
 }
-a:visited { 
-    text-decoration: none; 
+
+a:visited {
+    text-decoration: none;
     color: white;
 }
+
 form {
     flex-flow: column;
     justify-content: left;
     flex-direction: column;
     display: flex;
     position: relative;
-    transition: 1s;
     width: 200px;
     justify-content: space-evenly;
     height: 230px;
@@ -74,21 +70,23 @@ form {
     background-color: white;
     margin: 20px;
     color: #474747;
-    float: left;
     border: 3px solid #535353;
-    bottom: 50px;
-}
-p{
+    top: -30px;
+    }
+
+p {
     padding: 21px;
     bottom: 60px;
     width: fit-content;
     position: relative;
 }
-h2{
+
+h2 {
     position: absolute;
     bottom: 230px;
 }
-h4{
+
+h4 {
     color: #474747;
     justify-content: left;
     display: flex;
@@ -100,6 +98,7 @@ h4{
     position: relative;
     padding-left: 20px;
 }
+
 #loginSubmit {
     background: #6394f8;
     color: white;
@@ -114,11 +113,8 @@ h4{
     background: #b6c8f8;
     transition: .3s;
 }
+
 input {
     color: black;
-
     text-align: center;
-}
-h2{
-
 }

@@ -32,10 +32,7 @@ ul {
     float: left;
 }
 
-.container {
-    margin: auto;
-    width: 80%;
-}
+
 
 #mainHeader {
     position: relative;
@@ -52,7 +49,6 @@ form {
     flex-direction: column;
     display: flex;
     position: relative;
-    transition: 1s;
     width: 200px;
     justify-content: space-evenly;
     height: 230px;

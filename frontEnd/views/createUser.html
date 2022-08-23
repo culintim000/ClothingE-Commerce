@@ -15,12 +15,12 @@
         <h3>Fill out this form with valid infomation to create an account.</h3>
         <form id="userCreationForm">
             <h2>User Creation</h2>
-            <input id="userName" name="userName" type="text" placeholder="Username", required>
-            <input id="email" name="email" type="text" placeholder="Email", required>
-            <input id="password" name="password" type="password" placeholder="Password", required>
+            <input autocomplete="off" id="username" name="username" type="text" placeholder="Username", required>
+            <input autocomplete="off" id="email" name="email" type="text" placeholder="Email", required>
+            <input autocomplete="new-password" id="password" name="password" type="password" placeholder="Password", required>
             <button id="createUserSubmit">Create Account</button>
         </form>
     </body>
     <script src="../javascript/createUser.js"></script>
-    <script src="../javascript/validaiton.js"></script>
+    <script src="../javascript/validation.js"></script>
 </html>
