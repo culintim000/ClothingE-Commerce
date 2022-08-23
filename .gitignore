@@ -1,5 +1,5 @@
 
 .DS_Store
 auth-service/obj/Debug/net6.0/project.razor.json
-.vscode
-auth-service
+/.vscode
+/auth-service
