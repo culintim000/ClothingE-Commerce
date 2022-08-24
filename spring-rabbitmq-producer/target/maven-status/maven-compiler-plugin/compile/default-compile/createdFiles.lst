@@ -1,0 +1,4 @@
+com\csc380\springrabbitmqproducer\CustomItem.class
+com\csc380\springrabbitmqproducer\SpringRabbitmqProducerApplication.class
+com\csc380\springrabbitmqproducer\MQConfig.class
+com\csc380\springrabbitmqproducer\MessagePublisher.class

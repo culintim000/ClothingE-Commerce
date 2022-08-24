@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.csc380.springrabbitmqconsumer.SpringRabbitmqConsumerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.591 s - in com.csc380.springrabbitmqconsumer.SpringRabbitmqConsumerApplicationTests
