@@ -17,7 +17,6 @@ if [ "$1" = '/opt/mssql/bin/sqlservr' ]; then
       #run the setup script to create the DB and the schema in the DB
       /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P abc123!!@ -d master -i startup.sql
 
-        # Note that the container has been initialized so future starts won't wipe changes to the data
       touch /tmp/app-initialized
     }
 
