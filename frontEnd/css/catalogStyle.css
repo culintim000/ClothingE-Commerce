@@ -52,12 +52,14 @@ body {
     text-align: center;
     padding: 5px;
     margin: 10px;
+    border-radius: 3px;
 }
 .catalog-item-info a{
     font-style: italic;
     text-decoration: underline;
     color: #6d6a6a;
     margin-right: 35px;
+    
 }
 
 .add-to-cart{
