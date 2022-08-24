@@ -76,3 +76,23 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
+
+  filter-service:
+    container_name: filter-service
+    build:
+      context: ./pythonFilter
+      dockerfile: dockerfile
+    image: filter-service:1
+    ports:
+      - "8080:8080"
+    networks:
+      - netecommerce.1
+    depends_on:
+      - eureka
+    deploy:
+      # replicas : 3
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s

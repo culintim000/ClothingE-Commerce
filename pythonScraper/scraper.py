@@ -7,6 +7,7 @@ from pymongo import MongoClient
 import os
 import time
 
+
 class Item:
     def __init__(self) -> None:
         self.img: str = None
@@ -97,7 +98,7 @@ def forever21(url: str, type: str):
     collections.append(product_objects)
 
 def main():
-    amt_per_page: int = 9
+    amt_per_page: int = 128
     forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_sweaters%7Cshop_by_category_new_tees%7Cshop_by_category_new_tops%7Cshop_by_category_new_shirts_and_blouses&sz={amt_per_page}', 'top')
     forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_bottoms%7Cshop_by_category_new_pants%7Cshop_by_category_new_shorts%7Cshop_by_category_new_skirts%7Cshop_by_category_new_jeans%7Cshop_by_category_new_leggings&sz={amt_per_page}', 'bottom')
     forever21(f'https://www.forever21.com/us/shop/catalog/category/21men/mens-new-arrivals-clothing?cgid=mens_new_arrivals_clothing&prefn1=akeneo_shopByCategoryNew&prefv1=shop_by_category_new_jackets_and_outerwear%7Cshop_by_category_new_shirts_and_blouses%7Cshop_by_category_new_tees%7Cshop_by_category_new_sweaters%7Cshop_by_category_new_tops&prefn2=akeneo_sizeName&prefv2=XXL%7CXL&sz={amt_per_page}', 'top')
