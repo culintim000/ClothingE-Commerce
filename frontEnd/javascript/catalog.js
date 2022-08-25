@@ -4,6 +4,7 @@ var addToCartBtn = document.getElementsByClassName("add-to-cart");
 var removeFromCartBtn = document.getElementsByClassName("remove-from-cart");
 var shoppingCartItems = document.getElementById("shoppping-cart-items");
 var cartTotal = document.getElementById("total-cart");
+var searchButton = document.getElementById("searchButton");
 console.log(shoppingCartItems);
 window.onload = appendCatalog;
 
@@ -36,6 +37,78 @@ const handleFetchcatalog = async () => {
 }*/
 
 let items = [
+  {
+    _id: {
+      $oid: "62fd1b03f49e20016f824e8f",
+    },
+    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
+    name: "Plus Size Contrast-Trim Tie-Front Top",
+    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
+    price: 22.99,
+    type: "top",
+    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
+    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
+  },
+  {
+    _id: {
+      $oid: "62fd1b03f49e20016f824e90",
+    },
+    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
+    name: "Plus Size Ruffle-Trim Smocked Top",
+    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
+    price: 19.99,
+    type: "top",
+    size_list: ["0X", "1X", "2X", "3X"],
+    color_list: ["CREAM", "BLACK"],
+  },
+  {
+    _id: {
+      $oid: "62fd1b03f49e20016f824e8f",
+    },
+    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
+    name: "Plus Size Contrast-Trim Tie-Front Top",
+    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
+    price: 22.99,
+    type: "top",
+    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
+    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
+  },
+  {
+    _id: {
+      $oid: "62fd1b03f49e20016f824e90",
+    },
+    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
+    name: "Plus Size Ruffle-Trim Smocked Top",
+    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
+    price: 19.99,
+    type: "top",
+    size_list: ["0X", "1X", "2X", "3X"],
+    color_list: ["CREAM", "BLACK"],
+  },
+  {
+    _id: {
+      $oid: "62fd1b03f49e20016f824e8f",
+    },
+    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
+    name: "Plus Size Contrast-Trim Tie-Front Top",
+    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
+    price: 22.99,
+    type: "top",
+    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
+    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
+  },
+  {
+    _id: {
+      $oid: "62fd1b03f49e20016f824e90",
+    },
+    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
+    name: "Plus Size Ruffle-Trim Smocked Top",
+    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
+    price: 19.99,
+    type: "top",
+    size_list: ["0X", "1X", "2X", "3X"],
+    color_list: ["CREAM", "BLACK"],
+  },
   {
     _id: {
       $oid: "62fd1b03f49e20016f824e8f",
@@ -148,4 +221,10 @@ function updateBadge() {
   let badge2 = document.getElementById("number-of-items-in-cart2");
   badge.innerHTML = cartItems.length;
   badge2.innerHTML = cartItems.length;
+}
+
+
+
+searchButton.onclick = function () {
+  console.log("HELLO I AM TRYING TO SEARCH");
 }
