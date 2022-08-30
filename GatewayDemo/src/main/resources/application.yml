@@ -10,6 +10,17 @@ eureka:
 spring:
   application:
     name: gateway-service-pro290
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      default-filters:
+        #This is to prevent two different cors headers being sent.
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
   # cloud:
   #   gateway:
   #     routes:
