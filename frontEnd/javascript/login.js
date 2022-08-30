@@ -1,39 +1,49 @@
 var loginButton = document.getElementById("loginSubmit");
 var username = document.getElementById("username");
 var password = document.getElementById("password");
+var form = document.getElementById("loginForm");
+
+form.addEventListener('submit', (ev) => {
+  ev.preventDefault();
+});
 
 /////MUST BE TESTED WITH AN ENDPOINT LATER/////
 let customerInfo = {};
-async function sendLogintoBackend(username, password) {
+loginButton.addEventListener("click", async () => {
   console.log("attempting to send user to backend");
-  const data = { Username: username, Password: password };
-  fetch("endpoint-here", {
+  const data = { 
+      Username: username.value.toString(),
+     Password: password.value.toString()};
+  await fetch("http://localhost:8888/auth-service/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    mode: "no-cors", //POSSIBLE FIX TO CORS ERROR I HAD BEFORE?
     body: JSON.stringify(data),
   })
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
       localStorage.setItem("token", data.token);
-      if (isLoggedIn === true) {
-        customerInfo = { username: data.username, email: data.email };
+      console.log(isLoggedIn());
+      if (isLoggedIn() === true) {
+        customerInfo = { username: data.username, email: data.email, token: data.token};
         window.location.href = "Catalog.html";
-      } else {
+      }
+      else {
         alert("Incorrect email or password");
       }
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+});
+
+function isLoggedIn() {
+  console.log("checking if user is logged in");
+  console.log(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
+  if (token === null) return false;
+  return true;
 }
 
-async function isLoggedIn() {
-  const token = store.get("token");
-  if (!token) return false;
-}
-
-loginButton.addEventListener("click", sendLogintoBackend(username, password));

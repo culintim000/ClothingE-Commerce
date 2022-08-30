@@ -36,7 +36,8 @@ const handleFetchcatalog = async () => {
     );
 }*/
 
-let items = [
+
+/*let items = [
   {
     _id: {
       $oid: "62fd1b03f49e20016f824e8f",
@@ -133,7 +134,7 @@ let items = [
     size_list: ["0X", "1X", "2X", "3X"],
     color_list: ["CREAM", "BLACK"],
   },
-];
+]; **/
 
 let total = 0;
 
