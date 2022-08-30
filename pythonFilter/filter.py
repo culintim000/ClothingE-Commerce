@@ -9,6 +9,9 @@ DB_USER = os.environ.get('DB_USERNAME')
 DB_PASS = os.environ.get('DB_PASSWORD')
 # DB_PASS = DB_PASS if DB_PASS is not None else 'P6gbkQPwUZGbGazB'
 
+DB_USER = 'e-commerce'
+DB_PASS = 'P6gbkQPwUZGbGazB'
+
 myclient = MongoClient(f'mongodb+srv://{DB_USER}:{DB_PASS}@cluster0.wexky.mongodb.net/?retryWrites=true&w=majority')
 mydb = myclient['ClothingE-Commerce']
 mycol = mydb['clothes']
