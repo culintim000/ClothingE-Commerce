@@ -42,7 +42,7 @@ def create_query_dict(info: dict) -> dict:
     
     
 
-@app.route('/filter', methods=['GET'])
+@app.route('/filter', methods=['GET', 'POST'])
 def filter():
     info: dict = request.json #{'name': 'name', 'price': float(), 'type': 'type', 'color_list': [], 'size_list': []}
     query_dict: dict = create_query_dict(info)

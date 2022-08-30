@@ -89,37 +89,38 @@ services:
     networks: 
       - clothesecommerce.1
     depends_on:
-      - eureka
       - message-queue
 
   message-producer:
-    container_name: message-producer
+    # container_name: message-producer
     build: 
       context: ./spring-rabbitmq-producer
       dockerfile: Dockerfile
     image: message-producer:1
-    ports: 
-      - "9001:9001"
+    # ports: 
+    #   - "9001:9001"
     networks: 
       - clothesecommerce.1
     depends_on:
       - eureka
       - message-queue
+    deploy:
+      replicas : 3
 
   filter-service:
-    container_name: filter-service
+    # container_name: filter-service
     build:
       context: ./pythonFilter
       dockerfile: DockerFile
     image: filter-service:1
-    ports:
-      - "8081:8080"
+    # ports:
+    #   - "8081:8080"
     networks:
       - clothesecommerce.1
     depends_on:
       - eureka
     deploy:
-      # replicas : 3
+      replicas : 3
       restart_policy:
         condition: on-failure
         delay: 5s
