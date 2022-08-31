@@ -29,19 +29,15 @@ public class MessagePublisher {
     private RabbitTemplate template;
 
     @PostMapping("/publish")
-    public ResponseEntity publishMessage(@RequestBody JSONObject jsonObject) throws UnsupportedEncodingException {
+    public ResponseEntity publishMessage(@RequestBody ArrayList<JSONObject> jsonObjects) throws UnsupportedEncodingException {
 
-        double total = (double) jsonObject.get("total");
-        Object customerInfo = jsonObject.get("customerInfo");
-        LinkedHashMap hashMapCusInfo = (LinkedHashMap) customerInfo;
-        String username = (String) hashMapCusInfo.get("username");
-        String email = (String) hashMapCusInfo.get("email");
-        String token = (String) hashMapCusInfo.get("token");
-        ArrayList items = (ArrayList) jsonObject.get("items");
+        double total = (double) jsonObjects.get(jsonObjects.size()-2).get("total");
+        String username = (String) jsonObjects.get(jsonObjects.size()-1).get("username");
+        String email = (String) jsonObjects.get(jsonObjects.size()-1).get("email");
+        String token = (String) jsonObjects.get(jsonObjects.size()-1).get("token");
+        System.out.println("OK");
 
-
-
-        if (username == null || email == null || token == null || items == null) {
+        if (username == null || email == null || token == null) {
             return ResponseEntity.badRequest().body("Information missing");
         }
         else {
@@ -61,30 +57,31 @@ public class MessagePublisher {
                         "        <th>Image</th>" +
                         "    </tr>");
 
-                for (int i = 0; i < items.size(); i++) {
-                    CustomItem customItem = new CustomItem((LinkedHashMap) items.get(i));
+                for (int i = 0; i < jsonObjects.size() - 2; i++) {
+//                    CustomItem customItem = new CustomItem((LinkedHashMap) items.get(i));
+                    JSONObject customItem = jsonObjects.get(i);
 
                     StringBuilder sb = new StringBuilder();
                     sb.append("<tr><td>");
-                    sb.append(customItem.name);
+                    sb.append(customItem.get("name"));
                     sb.append("</td><td>");
-                    sb.append(customItem.price);
+                    sb.append(customItem.get("price"));
                     sb.append("</td><td>");
-                    sb.append(customItem.type);
+                    sb.append(customItem.get("type"));
                     sb.append("</td><td>");
-                    for (String size : customItem.size_list) {
+                    for (String size : (ArrayList<String>) customItem.get("size_list")) {
                         sb.append(size);
                         sb.append("<br>");
                     }
                     sb.append("</td><td>");
-                    for (String color : customItem.color_list) {
+                    for (String color : (ArrayList<String>) customItem.get("color_list")) {
                         sb.append(color);
                         sb.append("<br>");
                     }
                     sb.append("</td><td><img src=\"");
-                    sb.append(customItem.img);
+                    sb.append(customItem.get("img"));
                     sb.append("\" alt=\"");
-                    sb.append(customItem.name);
+                    sb.append(customItem.get("name"));
                     sb.append("\" style=\"width:90px;height:120px;\"></td></tr>");
                     mainSB.append(sb.toString());
                 }
