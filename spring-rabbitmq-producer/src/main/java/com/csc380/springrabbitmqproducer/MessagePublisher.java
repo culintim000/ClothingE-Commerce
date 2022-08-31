@@ -31,7 +31,7 @@ public class MessagePublisher {
     @PostMapping("/publish")
     public ResponseEntity publishMessage(@RequestBody ArrayList<JSONObject> jsonObjects) throws UnsupportedEncodingException {
 
-        double total = (double) jsonObjects.get(jsonObjects.size()-2).get("total");
+        String total = (String) jsonObjects.get(jsonObjects.size()-2).get("total");
         String username = (String) jsonObjects.get(jsonObjects.size()-1).get("username");
         String email = (String) jsonObjects.get(jsonObjects.size()-1).get("email");
         String token = (String) jsonObjects.get(jsonObjects.size()-1).get("token");
