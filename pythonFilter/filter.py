@@ -1,8 +1,9 @@
-from flask import Flask, request, Response
-import py_eureka_client.eureka_client as eureka_client
+from flask import Flask, request, Response, jsonify
 from pymongo import MongoClient
 import os
 import py_eureka_client.eureka_client as eureka_client
+import json
+from bson.json_util import dumps
 
 DB_USER = os.environ.get('DB_USERNAME')
 # DB_USER = DB_USER if DB_USER is not None else 'e-commerce'
@@ -18,7 +19,7 @@ mycol = mydb['clothes']
 
 app = Flask(__name__)
 your_rest_server_port = 8080
-eureka_client.init(eureka_server="http://eureka:8761/eureka", app_name="filter-service", instance_port=your_rest_server_port)
+# eureka_client.init(eureka_server="http://eureka:8761/eureka", app_name="filter-service", instance_port=your_rest_server_port)
 
 def create_query_dict(info: dict) -> dict:
     info_keys = list(info.keys())
@@ -48,12 +49,17 @@ def filter():
     query_dict: dict = create_query_dict(info)
     # return tuple(mycol.find(query_dict))
     filtered_items = list(mycol.find(query_dict))
+    # return Response(filtered_items, mimetype='application/json')
+    # return jsonify(filtered_items)
+    return dumps(filtered_items)
+    return filtered_items
     # print(data[0])
     filtered_dict = dict({})
     for i in range(len(filtered_items)):
         del filtered_items[i]['_id']
         filtered_dict[i] = filtered_items[i]
-    return filtered_dict
+    # return filtered_dict
+    return []
     return 'fuck'
 
 app.run(host='0.0.0.0', port=8080)

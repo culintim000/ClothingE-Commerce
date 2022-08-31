@@ -7,6 +7,8 @@ from pymongo import MongoClient
 import os
 import time
 
+global cur_id
+cur_id = 0
 
 class Item:
     def __init__(self) -> None:
@@ -17,6 +19,7 @@ class Item:
         self.type: str = None
         self.size_list: list = []
         self.color_list: list = []
+        self._id: int = None
     def to_dict(self) -> dict:
         return (self.__dict__)
 
@@ -54,9 +57,11 @@ def forever21_single_item(obj: Item):
     size_tag_list: list = soup.find_all("button", {"class":"swatch--size-large"})
     dirty_sizes: list = [str(x.get('aria-label')) for x in size_tag_list]
     clean_sizes: list = [str(size.removeprefix('Size: ')).split('/')[0] for size in dirty_sizes]
+    clean_sizes: list = [str(size.removeprefix('Size: ')).split(',')[0] for size in dirty_sizes]
     obj.size_list = clean_sizes
 
 def forever21(url: str, type: str):
+    global cur_id
     html = render_page(url)
     soup = BeautifulSoup(html, 'html.parser')
     products: list = soup.find_all("div", {"class":'product-grid__item'})
@@ -92,13 +97,15 @@ def forever21(url: str, type: str):
         except:
             pass
             print('here')
+        item._id = cur_id
+        cur_id+=1
         product_objects.append(item.to_dict())
         # break
     # print(len(product_objects))
     collections.append(product_objects)
 
 def main():
-    amt_per_page: int = 128
+    amt_per_page: int = 64
     forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_sweaters%7Cshop_by_category_new_tees%7Cshop_by_category_new_tops%7Cshop_by_category_new_shirts_and_blouses&sz={amt_per_page}', 'top')
     forever21(f'https://www.forever21.com/us/shop/catalog/category/f21/plus-size-clothing?cgid=plus_size_clothing&prefn1=akeneo_departmentName&prefv1=department_name_plus_size&prefn2=akeneo_shopByCategoryNew&prefv2=shop_by_category_new_bottoms%7Cshop_by_category_new_pants%7Cshop_by_category_new_shorts%7Cshop_by_category_new_skirts%7Cshop_by_category_new_jeans%7Cshop_by_category_new_leggings&sz={amt_per_page}', 'bottom')
     forever21(f'https://www.forever21.com/us/shop/catalog/category/21men/mens-new-arrivals-clothing?cgid=mens_new_arrivals_clothing&prefn1=akeneo_shopByCategoryNew&prefv1=shop_by_category_new_jackets_and_outerwear%7Cshop_by_category_new_shirts_and_blouses%7Cshop_by_category_new_tees%7Cshop_by_category_new_sweaters%7Cshop_by_category_new_tops&prefn2=akeneo_sizeName&prefv2=XXL%7CXL&sz={amt_per_page}', 'top')
