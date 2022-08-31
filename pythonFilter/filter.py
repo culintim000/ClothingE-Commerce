@@ -19,7 +19,7 @@ mycol = mydb['clothes']
 
 app = Flask(__name__)
 your_rest_server_port = 8080
-# eureka_client.init(eureka_server="http://eureka:8761/eureka", app_name="filter-service", instance_port=your_rest_server_port)
+eureka_client.init(eureka_server="http://eureka:8761/eureka", app_name="filter-service", instance_port=your_rest_server_port)
 
 def create_query_dict(info: dict) -> dict:
     info_keys = list(info.keys())
