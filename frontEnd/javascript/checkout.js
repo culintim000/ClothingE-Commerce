@@ -14,6 +14,16 @@ checkoutButton.addEventListener('click', function(e){
   let myJSONString = JSON.stringify(NewArrayWithTotal);
   console.log(cartItems);
   console.log(myJSONString);
+ /**  const sendEmail = async () => {
+    fetch("http://localhost:8888/message-producer/publish",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+
+    })
+  }*/
+
+
   window.location.href = 'Checkout.html';
   
 });
