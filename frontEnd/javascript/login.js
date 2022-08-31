@@ -28,6 +28,7 @@ loginButton.addEventListener("click", async () => {
       console.log(isLoggedIn());
       if (isLoggedIn() === true) {
         customerInfo = { username: data.username, email: data.email, token: data.token};
+        localStorage.setItem("customerInfo", JSON.stringify(customerInfo));
         window.location.href = "Catalog.html";
       }
       else {

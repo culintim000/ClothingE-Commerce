@@ -5,8 +5,62 @@ var removeFromCartBtn = document.getElementsByClassName("remove-from-cart");
 var shoppingCartItems = document.getElementById("shoppping-cart-items");
 var cartTotal = document.getElementById("total-cart");
 var searchButton = document.getElementById("searchButton");
+
+////////SREACH FITLER/////////////
+var title = document.getElementById("sreachName");
+var type = document.getElementById("type-list");
+var priceFilter = document.getElementById("price-filter");
+var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
+
+
 console.log(shoppingCartItems);
 window.onload = appendCatalog;
+
+
+
+let items;
+let searchFilter = {};
+
+
+
+const handleFetchcatalog = async () => {
+  await fetch("http://localhost:8888/filter-service/filter", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(searchFilter),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      items = data;
+      appendCatalog(items);
+    }).catch((err) => console.log(err));
+}
+
+
+  // if(title.value.toString() != ""){
+  //   searchFilter.title = title.value;
+  // }
+  // if(type.options[type.selectedIndex].value.toString() != "no preference"){
+  //   searchFilter.type = type.options[type.selectedIndex].value;
+  // }
+  // if(priceFilter.value.toString() != ""){
+  //   searchFilter.price = priceFilter.value;
+  // }
+  // color_list = [];
+  // for (var checkbox of markedCheckbox ){
+  //   if(checkbox.checked){
+  //     color_list.push(checkbox.value.toString());
+  //   }
+  // }
+  // if(color_list.length > 0){
+  //   searchFilter.color = color_list;
+  // }
+
+
+
+
 
 /*var catalog = document.getElementById("catalog-items");
 const handleFetchcatalog = async () => {
@@ -37,110 +91,11 @@ const handleFetchcatalog = async () => {
 }*/
 
 
-/*let items = [
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e8f",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Contrast-Trim Tie-Front Top",
-    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
-    price: 22.99,
-    type: "top",
-    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
-    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e90",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Ruffle-Trim Smocked Top",
-    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
-    price: 19.99,
-    type: "top",
-    size_list: ["0X", "1X", "2X", "3X"],
-    color_list: ["CREAM", "BLACK"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e8f",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Contrast-Trim Tie-Front Top",
-    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
-    price: 22.99,
-    type: "top",
-    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
-    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e90",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Ruffle-Trim Smocked Top",
-    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
-    price: 19.99,
-    type: "top",
-    size_list: ["0X", "1X", "2X", "3X"],
-    color_list: ["CREAM", "BLACK"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e8f",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Contrast-Trim Tie-Front Top",
-    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
-    price: 22.99,
-    type: "top",
-    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
-    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e90",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Ruffle-Trim Smocked Top",
-    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
-    price: 19.99,
-    type: "top",
-    size_list: ["0X", "1X", "2X", "3X"],
-    color_list: ["CREAM", "BLACK"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e8f",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw6ad1ef7c/1_front_750/00464419-02.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Contrast-Trim Tie-Front Top",
-    href: "https://www.forever21.com/us/2000464419.html?dwvar_2000464419_color=02",
-    price: 22.99,
-    type: "top",
-    size_list: ["0X/1X", "2X/3X", "3X/4X", "unselectable"],
-    color_list: ["BLACK", "DUSTY PINK", "CLOUD"],
-  },
-  {
-    _id: {
-      $oid: "62fd1b03f49e20016f824e90",
-    },
-    img: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dwb694fc7c/1_front_750/00455959-01.jpg?sw=276&amp;sh=414",
-    name: "Plus Size Ruffle-Trim Smocked Top",
-    href: "https://www.forever21.com/us/2000455959.html?dwvar_2000455959_color=01",
-    price: 19.99,
-    type: "top",
-    size_list: ["0X", "1X", "2X", "3X"],
-    color_list: ["CREAM", "BLACK"],
-  },
-]; **/
+
 
 let total = 0;
 
-/** 
-{  }
-**/
+
 
 let cartItems = [];
 function appendCatalog() {
@@ -158,12 +113,11 @@ function appendCatalog() {
             <p>${items.size_list}</p>
             <a href="${items.href}">Link to Item</a>
             <ul></ul>
-            <button class="add-to-cart" data-id="${items._id.$oid}">Add to Cart</button>
+            <button class="add-to-cart" data-id="${items._id}">Add to Cart</button>
         </div>
         `;
 
     catalog.appendChild(catalogItem);
-    console.log(catalogItem);
     for (var i = 0; i < addToCartBtn.length; i++) {
       addToCartBtn[i].addEventListener("click", addToCart);
     }
@@ -172,18 +126,18 @@ function appendCatalog() {
 
 function addToCart(e) {
   console.log("HELLO I AM TRYING TO ADD TO CART");
-  cartItems.push(items.find((item) => item._id.$oid == e.target.getAttribute("data-id")));
+  cartItems.push(items.find((item) => item._id == e.target.getAttribute("data-id")));
 
   console.log("push");
   let id = e.target.getAttribute("data-id");
-  let item = items.find((item) => item._id.$oid == id);
+  let item = items.find((item) => item._id == id);
   let cartItem = document.createElement("li");
   cartItem.classList.add("cart-item");
   cartItem.innerHTML = `
     <div class="cart-item-info">
         <h3>${item.name}</h3>
         <p>${item.price}</p>
-        <button class="remove-from-cart" data-id="${item._id.$oid}">Remove from Cart</button>
+        <button class="remove-from-cart" data-id="${item._id}">Remove from Cart</button>
     </div>
     `;
   shoppingCartItems.appendChild(cartItem);
@@ -198,7 +152,7 @@ function addToCart(e) {
 function removeFromCart(e) {
   console.log("HELLO I AM TRYING TO REMOVE FROM CART");
   let id = e.target.getAttribute("data-id");
-  let item = cartItems.find((item) => item.id == id);
+  let item = cartItems.find((item) => item._id == id);
   cartItems.splice(cartItems.indexOf(item), 1);
   e.target.parentElement.parentElement.remove();
   console.log(cartItems);
@@ -208,6 +162,7 @@ function removeFromCart(e) {
 
 function findTotal() {
   console.log("HELLO I AM TRYING TO FIND TOTAL");
+  total = 0.00;
   for (var i = 0; i < cartItems.length; i++) {
     console.log(cartItems[i].price);
     total += parseFloat(cartItems[i].price);
@@ -226,6 +181,6 @@ function updateBadge() {
 
 
 
-searchButton.onclick = function () {
-  console.log("HELLO I AM TRYING TO SEARCH");
-}
+
+
+handleFetchcatalog();

@@ -54,7 +54,7 @@ body {
 .catalog-item-info{
     background-color: rgb(191, 218, 253);
     width: fit-content;
-    height: fit-content;
+    height: 550px;
     text-transform: capitalize;
     flex-flow: row;
     float: left;
@@ -66,7 +66,12 @@ body {
     flex-wrap: wrap;
     width: 320px;
 }
+.catalog-item-info p{
+    margin: 5px;
+
+}
 .catalog-item-info a{
+    float: left;
     font-style: italic;
     text-decoration: underline;
     color: #6d6a6a;
@@ -81,7 +86,6 @@ body {
     border: #6394f8;
     border-radius: 5px;
     padding: 10px;
-    margin: 2px;
     text-align: center;
     width: fit-content;
     height: fit-content;
@@ -251,7 +255,7 @@ a:hover {
     text-align: center;
     font-size: 13px;
     font-weight: bold;
-    height: 115px;
+    height: fit-content;
     background-color: #c7ddfa;
 }
 .remove-from-cart{

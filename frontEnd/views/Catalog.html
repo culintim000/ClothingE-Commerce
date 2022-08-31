@@ -38,54 +38,54 @@
                 <!--item array here-->
             </ul>
 
-            <a href="#" class="button" id="checkoutButton">Checkout</a>
+            <a class="button" id="checkoutButton">Checkout</a>
         </div>
         <!--end shopping-cart -->
     </div>
     <!--end container -->
 
     <body>
-        <section id="search-filter-box">
-            <h3>Search by:</h3>
-            <div id="name">
-                <input type="text" name="name" placeholder="Name">
-            </div>
-            <div id="type">
-                <h4>Type</h4>
-                <ul id="type-list">
-                <li><input type="checkbox" name="top" value="top">tops</li>
-                <li><input type="checkbox" name="bottom" value="bottom">bottoms</li>
-                <li><input type="checkbox" name="jacket" value="jacket">jackets</li>
-                <li><input type="checkbox" name="shoes" value="shoes">shoes</li></ul>
-            </ul>
-            </div>
-            <div id="'price">
-                <h4>Price</h4>
-                <ul id="price-list">
-                <li><input type="checkbox" name="$" value="10.00">$</li>
-                <li><input type="checkbox" name="$$" value="25.00">$$</li>
-                <li><input type="checkbox" name="$$$" value="40.00">$$$</li>
-                <li><input type="checkbox" name="$$$$" value="60.00">$$$$</li></ul>
-            </div>
-            <div id="color">
-                <h4>Color</h4>
-                <ul id="color-list">
-                <li><input type="checkbox" name="red" value="RED">red</li>
-                <li><input type="checkbox" name="blue" value="BLUE">blue</li>
-                <li><input type="checkbox" name="green" value="GREEN">green</li>
-                <li><input type="checkbox" name="black" value="BLACK">black</li>
-                <li><input type="checkbox" name="white" value="WHITE">white</li>
-                <li><input type="checkbox" name="yellow" value="YELLOW">yellow</li>
-                <li><input type="checkbox" name="orange" value="ORANGE">orange</li>
-                <li><input type="checkbox" name="purple" value="PURPLE">purple</li>
-                <li><input type="checkbox" name="pink" value="PINK">pink</li>
-                <li><input type="checkbox" name="brown" value="BROWN">brown</li>
-                <li><input type="checkbox" name="grey" value="GREY">grey</li>
-                <li><input type="checkbox" name="silver" value="SILVER">silver</li>
-                <li><input type="checkbox" name="gold" value="GOLD">gold</li></ul>
-        </div>
-        <button id="searchButton">Search</button>
-        </section>
+        <form id="searchForm">
+            <section id="search-filter-box">
+                <h3>Search by:</h3>
+                <div id="name">
+                    <input type="text" id="searchName" name="name" placeholder="Name">
+                </div>
+                <div id="type">
+                    <h4>Type</h4>
+                    <select id="type-list">
+                        <option name="top" value="top">Tops</option>
+                        <option name="bottom" value="bottom">Bottoms</option>
+                        <option name="jacket" value="jacket">Jackets</option>
+                        <option name="shoes" value="shoes">Shoes</option>
+                        <option name="no prefrence" value="no prefrence">No Preference</option>
+                    </select>
+                </div>
+                <div id="price">
+                    <h4>Price</h4>
+                    <input type="text" id="price-filter" name="price-filter" placeholder="Price">
+                </div>
+                <div id="color">
+                    <h4>Color</h4>
+                    <ul id="color-list">
+                        <li><input id="inputRed" type="checkbox" name="box" value="RED">Red</li>
+                        <li><input id="inputBlue" type="checkbox" name="box" value="BLUE">Blue</li>
+                        <li><input id="inputGreen" type="checkbox" name="box" value="GREEN">Green</li>
+                        <li><input id="inputBlack" type="checkbox" name="box" value="BLACK">Black</li>
+                        <li><input id="inputWhite" type="checkbox" name="box" value="WHITE">White</li>
+                        <li><input id="inputYellow" type="checkbox" name="box" value="YELLOW">Yellow</li>
+                        <li><input id="inputOrange" type="checkbox" name="box" value="ORANGE">Orange</li>
+                        <li><input id="inputPurple" type="checkbox" name="box" value="PURPLE">Purple</li>
+                        <li><input id="inputPink" type="checkbox" name="box" value="PINK">Pink</li>
+                        <li><input id="inputBrown" type="checkbox" name="box" value="BROWN">Brown</li>
+                        <li><input id="inputGrey" type="checkbox" name="box" value="GREY">Grey</li>
+                        <li><input id="inputSilver" type="checkbox" name="box" value="SILVER">Silver</li>
+                        <li><input id="inputGold" type="checkbox" name="box" value="GOLD">Gold</li>
+                    </ul>
+                </div>
+                <button id="submit">Search</button>
+            </section>
+        </form>
         <section id="catalog">
             <div id="catalogItems">
                 <!--Item array will go here-->
