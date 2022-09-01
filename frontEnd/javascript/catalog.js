@@ -4,14 +4,15 @@ var addToCartBtn = document.getElementsByClassName("add-to-cart");
 var removeFromCartBtn = document.getElementsByClassName("remove-from-cart");
 var shoppingCartItems = document.getElementById("shoppping-cart-items");
 var cartTotal = document.getElementById("total-cart");
-var searchButton = document.getElementById("searchButton");
+var searchButton = document.getElementById("submit");
 
 ////////SREACH FITLER/////////////
-var title = document.getElementById("sreachName");
+var title = document.getElementById("searchName");
 var type = document.getElementById("type-list");
 var priceFilter = document.getElementById("price-filter");
 var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
-
+var form = document.getElementById("searchForm");
+var catalogItems = document.getElementById("catalogItems");
 
 console.log(shoppingCartItems);
 window.onload = appendCatalog;
@@ -33,8 +34,18 @@ const handleFetchcatalog = async () => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
+      if(data.length == 0){
+        alert("No items found");
+      }
+      else{
+      items = null;
+        //clearing the catalog
+        console.log("clearing the catalog");
+      catalogItems.innerHTML = " ";
+      catalog.innerHTML = " ";
       items = data;
-      appendCatalog(items);
+      appendCatalog(items);}
     }).catch((err) => console.log(err));
 }
 
@@ -180,7 +191,33 @@ function updateBadge() {
 }
 
 
+searchButton.addEventListener('click', function(e){
+  console.log(JSON.stringify(searchFilter));
+  console.log("HELLO I AM TRYING TO SEARCH");
+ // if(title.value != "" || title.value != null){
+  //  searchFilter.name = title.value;
+ // }
+ console.log( priceFilter.value.toString());
 
+  if( type.options[type.selectedIndex].text.toString()== ("No Preference")) {
+    delete searchFilter.type;
+  }
+  else{
+    searchFilter.type = type.options[type.selectedIndex].value;
+  }
+  if(priceFilter.value.toString() != "" && priceFilter.value.toString() != null && priceFilter.value.toString() != "0"){
+    searchFilter.price = priceFilter.value;
+  }
+  else{
+    delete searchFilter.price;
+  }
 
+  console.log(JSON.stringify(searchFilter));
+  handleFetchcatalog();
+});
+
+form.addEventListener('submit', (ev) => {
+  ev.preventDefault();
+});
 
 handleFetchcatalog();

@@ -6,7 +6,7 @@ checkoutButton.addEventListener('click', function(e){
   
   console.log('checkout.js');
   
-  const totalObject = {total: total};
+  const totalObject = {total: total.toFixed(2)};
   customerInfo = JSON.parse(Info);
   let NewArrayWithTotal = cartItems.concat(totalObject);
 
@@ -17,8 +17,9 @@ checkoutButton.addEventListener('click', function(e){
   let myJSONString = JSON.stringify(NewArrayWithUserInfo);
   console.log(cartItems);
   console.log(myJSONString);
-   const sendEmail = async () => {
-    fetch("http://localhost:8888/message-producer/publish",{
+  
+  const sendEmail = async () => {
+    await fetch("http://localhost:8888/message-producer/publish",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,13 +27,15 @@ checkoutButton.addEventListener('click', function(e){
       body: myJSONString,
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log("Success:", data);
+      .then((res) => {
+        console.log("Success:", res);
+        //window.location.href = "Checkout.html";
       }
       ).catch((err) => console.log(err));
   }
 
-  
+  sendEmail();
+
   console.log("end of checkout.js");
   
   
