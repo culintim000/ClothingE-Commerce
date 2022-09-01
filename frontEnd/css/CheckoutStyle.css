@@ -1,0 +1,59 @@
+html {
+    background-color: #6394f8;
+    color: #000000;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px/22px "Lato", Arial, sans-serif;
+    background: #6394f8;
+
+}
+
+nav {
+    padding: 20px 0 40px 0;
+    background: #f8f8f8;
+    font-size: 16px;
+}
+
+ul {
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    text-decoration: none;
+}
+
+.navbar-left {
+    float: left;
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+#mainHeader {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    bottom: 15px;
+    right: 10px;
+}
+p{
+    padding: 5px;
+    width: fit-content;
+}
+a{
+    padding: 5px;
+    color: white;
+}
+a:visited { 
+    text-decoration: none; 
+    color: white;
+}
