@@ -315,7 +315,7 @@ a:hover {
     justify-content: space-evenly;
     align-items: left;
     width: 190px;
-    height: 850px;
+    height: 880px;
     z-index: 1;
 }
 
@@ -336,7 +336,10 @@ a:hover {
 #color-list{
     flex-flow: column;
     display: grid;
+    height: 400px;
     margin-bottom: 10px;
+    padding: 10px;
+    overflow-y: scroll;
 }
 #searchButton{
     background-color: #6394f8;

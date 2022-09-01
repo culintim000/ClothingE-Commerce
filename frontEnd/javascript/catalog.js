@@ -10,7 +10,7 @@ var searchButton = document.getElementById("submit");
 var title = document.getElementById("searchName");
 var type = document.getElementById("type-list");
 var priceFilter = document.getElementById("price-filter");
-var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
+var checkboxes = document.getElementsByName("box");
 var form = document.getElementById("searchForm");
 var catalogItems = document.getElementById("catalogItems");
 
@@ -198,6 +198,7 @@ searchButton.addEventListener('click', function(e){
   //  searchFilter.name = title.value;
  // }
  console.log( priceFilter.value.toString());
+ let sizes = [];
 
   if( type.options[type.selectedIndex].text.toString()== ("No Preference")) {
     delete searchFilter.type;
@@ -211,6 +212,20 @@ searchButton.addEventListener('click', function(e){
   else{
     delete searchFilter.price;
   }
+  for (var i =0; i < checkboxes.length; i++){
+    if(checkboxes[i].checked){
+      sizes.push(checkboxes[i].value.toString());
+    }
+  }
+  console.log(sizes);
+  if(sizes.length > 0){
+    searchFilter.size_list = sizes;
+  }
+  else{
+    delete searchFilter.size_list;
+  }
+
+
 
   console.log(JSON.stringify(searchFilter));
   handleFetchcatalog();
