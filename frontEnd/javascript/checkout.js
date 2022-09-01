@@ -29,12 +29,13 @@ checkoutButton.addEventListener('click', function(e){
       .then((res) => res.json())
       .then((res) => {
         console.log("Success:", res);
-        //window.location.href = "Checkout.html";
       }
       ).catch((err) => console.log(err));
   }
 
   sendEmail();
+
+  window.location.href = "Checkout.html";
 
   console.log("end of checkout.js");
   
