@@ -1,0 +1,359 @@
+html {
+    background-color: #6394f8;
+    color: #abb0be;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#catalog {
+    position: inherit;
+    flex-flow: row;
+    flex-wrap: wrap;
+    display: flex;
+    float: left;
+    width: fit-content;
+    justify-content: inherit;
+    height: fit-content;
+    margin-left: 270px;
+    margin-top: -10px;
+    width: 90%;
+
+}
+
+body {
+    font: 14px/22px "Lato", Arial, sans-serif;
+    background: #6394f8;
+}
+
+#mainHeader {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    bottom: 15px;
+    right: 30px;
+
+}
+#itemimage{
+    justify-content: center;
+    position: relative;
+    display: block;
+    max-width:500px;
+    max-height:300px;
+    width: auto;
+    height: auto;
+    margin: auto;
+    border-radius: 3px;
+    border: 1px solid rgb(230, 230, 230);
+}
+.catalog-item-info{
+    background-color: rgb(191, 218, 253);
+    width: fit-content;
+    height: 550px;
+    text-transform: capitalize;
+    flex-flow: row;
+    float: left;
+    color: #6d6a6a;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+    flex-wrap: wrap;
+    width: 320px;
+}
+.catalog-item-info p{
+    margin: 5px;
+
+}
+.catalog-item-info a{
+    float: left;
+    font-style: italic;
+    text-decoration: underline;
+    color: #6d6a6a;
+    margin-right: 35px;
+    
+}
+
+.add-to-cart{
+    float: right;
+    background-color: #6394f8;
+    color: #ffffff;
+    border: #6394f8;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.add-to-cart:hover{
+    background-color: #ffffff;
+    color: #6394f8;
+    border: #6394f8;
+}
+
+.badge {
+    top: 2px;
+    position: relative;
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+}
+
+nav {
+    position: sticky;
+    padding: 20px 0 40px 0;
+    background: #f8f8f8;
+    font-size: 16px;
+    z-index: 100;
+}
+
+ul {
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    text-decoration: none;
+}
+
+a {
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
+
+.navbar-left {
+    float: left;
+}
+
+.navbar-right {
+    float: right;
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+.badge {
+    background-color: #6394f8;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#shopping-cart {
+    margin-top: 20px;
+    right: 30px;
+    float: right;
+    position: absolute;
+    background: white;
+    width: 320px;
+    border-radius: 3px;
+    padding: 20px;
+    z-index: 1;
+}
+
+#cart {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    bottom: 15px;
+    padding-right: 20px;
+    justify-content: space-evenly;
+}
+
+
+.shopping-cart-header {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 15px;
+}
+
+.shopping-cart-total {
+    float: right;
+}
+
+.shopping-cart-items {
+    padding-top: 20px;
+    margin-bottom: 18px;
+}
+
+.item-name {
+    display: block;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+#menuTri {
+    position: relative;
+    bottom: 34px;
+    float: right;
+    right: 30px;
+}
+
+.item-price {
+    margin-right: 8px;
+}
+
+#icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+
+#shopping-cart.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .5s linear;
+}
+
+#shopping-cart.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .5s, opacity .5s linear;
+}
+
+#shoppingcart:after {
+    bottom: 100%;
+    left: 89%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: white;
+    border-width: 8px;
+    margin-left: -8px;
+}
+.cart-item-info{
+    padding: 5px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    height: fit-content;
+    background-color: #c7ddfa;
+}
+.remove-from-cart{
+    position: relative;
+    display: flex;
+    background-color: #6394f8;
+    color: #ffffff;
+    border: #6394f8;
+    padding: 5px;
+    margin: 1px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+.remove-from-cart:hover{
+    background-color: #ffffff;
+    color: #6394f8;
+    border: #6394f8;
+}
+.cart-icon {
+    color: #515783;
+    font-size: 24px;
+    margin-right: 7px;
+    float: left;
+}
+
+.button {
+    background: #6394f8;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    border-radius: 3px;
+    font-size: 16px;
+    margin: 25px 0 15px 0;
+}
+
+.button:hover {
+    background: lighten(#6394f8, 3%);
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#search-filter-box{
+    color: #6d6a6a;
+    float: left;
+    position: fixed;
+    background-color: #f8f8f8;
+    padding: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: left;
+    justify-content: space-evenly;
+    align-items: left;
+    width: 190px;
+    height: 850px;
+    z-index: 1;
+}
+
+#type-list{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: left;
+    margin-bottom: 10px;
+}
+#price-list{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: left;
+    margin-bottom: 10px;
+}
+#color-list{
+    flex-flow: column;
+    display: grid;
+    margin-bottom: 10px;
+}
+#searchButton{
+    background-color: #6394f8;
+    position: flex;
+    justify-content: space-between;
+    float: right;
+    color: #ffffff;
+    border: #6394f8;
+    padding: 5px;
+    margin: 15px;
+    width: 50%;
+    text-align: center;
+    height: fit-content;
+   
+}
+#searchButton:hover{
+    background-color: #ffffff;
+    color: #6394f8;
+    border: #6394f8;
+}

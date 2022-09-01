@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<hmtl lang="en">
+
+    <head>
+        <title>E-Commerce Catalog</title>
+        <link rel="stylesheet" href="../css/CatalogStyle.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    </head>
+    <nav>
+        <div class="conatainer">
+            <ul class="navbar-left">
+                <li id="mainHeader">E-Commerce Catalog</h2>
+                </li>
+            </ul>
+            <ul class="navbar-right">
+                <li><a href="#" id="cart"><i class="shoppingcart"><img id="icon"
+                                src="../images/cartIcon.png"></i>Cart<span class="badge"
+                            id="number-of-items-in-cart">0</span></a></li>
+                <!-- <span class="badge">3</span> this will be number of items -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="shopping-cart" class="hidden">
+            <img id="menuTri" src="../images/menuTriangle.png">
+            <div class="shopping-cart-header">
+                <i class="cart-icon"><img id="icon" src="../images/cartIcon.png"></i><span class="badge"
+                    id="number-of-items-in-cart2">0</span>
+                <!--VAriable name change here  and up there ^^ fa fa whatever -->
+                <div class="shopping-cart-total">
+                    <span class="lighter-text">Total:</span>
+                    <span class="main-color-text" id="total-cart">$0.00</span>
+                </div>
+            </div>
+            <!--end shopping-cart-header -->
+
+            <ul class="shopping-cart-items" id="shoppping-cart-items">
+                <!--item array here-->
+            </ul>
+
+            <a class="button" id="checkoutButton">Checkout</a>
+        </div>
+        <!--end shopping-cart -->
+    </div>
+    <!--end container -->
+
+    <body>
+        <form id="searchForm">
+            <section id="search-filter-box">
+                <h3>Search by:</h3>
+                <div id="name">
+                    <input type="text" id="searchName" name="name" placeholder="Name">
+                </div>
+                <div id="type">
+                    <h4>Type</h4>
+                    <select id="type-list">
+                        <option name="No Preference" value="No Preference">No Preference</option>
+                        <option name="top" value="top">Tops</option>
+                        <option name="bottom" value="bottom">Bottoms</option>
+                    </select>
+                </div>
+                <div id="price">
+                    <h4>Price</h4>
+                    <input type="text" id="price-filter" name="price-filter" placeholder="Price">
+                </div>
+                <div id="color">
+                    <h4>Size</h4>
+                    <ul id="color-list">
+                        <li><input id="inputRed" type="checkbox" name="box" value="RED">Red</li>
+                        <li><input id="inputBlue" type="checkbox" name="box" value="BLUE">Blue</li>
+                        <li><input id="inputGreen" type="checkbox" name="box" value="GREEN">Green</li>
+                        <li><input id="inputBlack" type="checkbox" name="box" value="BLACK">Black</li>
+                        <li><input id="inputWhite" type="checkbox" name="box" value="WHITE">White</li>
+                        <li><input id="inputYellow" type="checkbox" name="box" value="YELLOW">Yellow</li>
+                        <li><input id="inputOrange" type="checkbox" name="box" value="ORANGE">Orange</li>
+                        <li><input id="inputPurple" type="checkbox" name="box" value="PURPLE">Purple</li>
+                        <li><input id="inputPink" type="checkbox" name="box" value="PINK">Pink</li>
+                        <li><input id="inputBrown" type="checkbox" name="box" value="BROWN">Brown</li>
+                        <li><input id="inputGrey" type="checkbox" name="box" value="GREY">Grey</li>
+                        <li><input id="inputSilver" type="checkbox" name="box" value="SILVER">Silver</li>
+                        <li><input id="inputGold" type="checkbox" name="box" value="GOLD">Gold</li>
+                    </ul>
+                </div>
+                <button id="submit">Search</button>
+            </section>
+        </form>
+        <section id="catalog">
+            <div id="catalogItems">
+                <!--Item array will go here-->
+            </div>
+        </section>
+    </body>
+    <script src="../javascript/design.js"></script>
+    <script src="../javascript/Catalog.js"></script>
+    <script src="../javascript/checkout.js"></script>
+
+    </html>
